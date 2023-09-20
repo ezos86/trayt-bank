@@ -10,13 +10,17 @@ import {
     Toolbar,
     Typography,
 } from '@mui/material';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import StartComponent from '../components/Start.component';
+import EnrollmentComponent from '../components/Enrollment.component';
+import InterestComponent from '../components/Interest.component';
 
 const WelcomePage: FC = () => {
     const { t } = useTranslation('translation');
     const navigate = useNavigate();
+    const [step, setStep] = useState<string>('start');
 
     const navItems = [
         {
@@ -89,6 +93,7 @@ const WelcomePage: FC = () => {
                 </Toolbar>
             </AppBar>
             <Grid container spacing={0}>
+                {/* Side Nav */}
                 <Grid item xs={4} md={2}>
                     <Box
                         sx={{
@@ -121,17 +126,17 @@ const WelcomePage: FC = () => {
                         marginTop: 20,
                     }}
                 >
-                    <Box maxWidth={700} textAlign="center">
-                        <Typography variant="h3" mb={6} gutterBottom>
-                            {t('welcomePage.title')}
-                        </Typography>
-                        <Typography variant="h4" gutterBottom>
-                            {t('welcomePage.subtitle')}
-                        </Typography>
-                        <Button variant="contained">
-                            {t('welcomePage.button')}
-                        </Button>
-                    </Box>
+                    {step == 'start' ? (
+                        <StartComponent
+                            stepHandler={() => setStep('enrollment')}
+                        />
+                    ) : step == 'enrollment' ? (
+                        <EnrollmentComponent
+                            stepHandler={() => setStep('interest')}
+                        />
+                    ) : (
+                        <InterestComponent />
+                    )}
                 </Grid>
             </Grid>
         </Box>
