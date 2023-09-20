@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { FC } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { RouterProvider } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material';
+import router from './navigation/router';
+import './i18n/i18n';
+import { AuthProvider } from './providers/Auth.provider';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const appTheme = createTheme({
+    palette: {
+        primary: {
+            main: '#004990',
+        },
+    },
+});
+
+const App: FC = () => {
+    return (
+        <ThemeProvider theme={appTheme}>
+            <AuthProvider>
+                <RouterProvider router={router} />
+            </AuthProvider>
+        </ThemeProvider>
+    );
+};
 
 export default App;
