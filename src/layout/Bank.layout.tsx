@@ -13,9 +13,11 @@ import { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-const BankLayout: FC<any> = ({ children }: { children: ReactNode }) => {
+const BankLayout: FC<any> = ({ children }) => {
     const { t } = useTranslation('translation');
     const navigate = useNavigate();
+
+    console.log('CHILDREN', children);
 
     const navItems = [
         {

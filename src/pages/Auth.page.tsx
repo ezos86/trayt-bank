@@ -19,7 +19,7 @@ const AuthPage: FC = () => {
     const submitLogin = () => {
         try {
             login(loginForm.username);
-            navigate('/bank');
+            navigate('/welcome');
         } catch (e) {
             console.log(e);
             // Error handling would be done through formik

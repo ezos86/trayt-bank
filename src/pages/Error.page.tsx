@@ -23,7 +23,9 @@ const ErrorPage: FC = () => {
                 <Typography variant="h4" gutterBottom>
                     {t('errorPage')}
                 </Typography>
-                <Button onClick={() => navigate('/')}>Let's Go Home...</Button>
+                <Button onClick={() => navigate('/welcome')}>
+                    Let's Go Home...
+                </Button>
             </Box>
         </Box>
     );

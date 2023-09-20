@@ -28,7 +28,18 @@ const resources = {
                     'Initiate a new Direct Deposit to earn 5% for 36 months!',
                 button: 'Learn More',
             },
-            errorPage: 'Ouch.. You got lost somehow...',
+            samplePage: {
+                title: 'Cool stuff can be created here',
+                button: 'Go Home',
+            },
+            userPage: {
+                title: 'Private stuff, auth is required',
+                button: 'Go Home',
+            },
+            errorPage: {
+                title: 'Ouch.. You got lost somehow...',
+                button: 'Go Home',
+            },
         },
     },
     es: {

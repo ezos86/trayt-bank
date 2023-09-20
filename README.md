@@ -4,6 +4,8 @@ This project is a trayt bank app demo
 
 ## Available Scripts
 
+Note: If you don't have yarn, please install: [https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
+
 In the project directory, you can run:
 
 ### `yarn start`

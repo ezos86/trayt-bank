@@ -2,23 +2,22 @@ import {
     AppBar,
     Box,
     Button,
-    Drawer,
     Grid,
     List,
     ListItem,
     ListItemButton,
-    ListItemIcon,
     ListItemText,
     Toolbar,
     Typography,
 } from '@mui/material';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 const WelcomePage: FC = () => {
     const { t } = useTranslation('translation');
     const navigate = useNavigate();
+
     const navItems = [
         {
             title: t('header.signIn'),
@@ -38,14 +37,14 @@ const WelcomePage: FC = () => {
         },
         {
             title: t('header.help'),
-            link: '/sample',
+            link: '/user',
         },
     ];
 
     const sideNavItems = [
         {
             title: t('leftNav.personal'),
-            link: '/sample',
+            link: '/user',
         },
         {
             title: t('leftNav.smallBusiness'),
@@ -80,7 +79,7 @@ const WelcomePage: FC = () => {
                         {navItems.map((item, i) => (
                             <Button
                                 key={i}
-                                sx={{ color: '#fff' }}
+                                sx={{ color: '#fff', marginLeft: 2 }}
                                 onClick={() => navigate(item.link)}
                             >
                                 {item.title}
