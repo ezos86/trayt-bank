@@ -8,9 +8,8 @@ import {
     ListItemButton,
     ListItemText,
     Toolbar,
-    Typography,
 } from '@mui/material';
-import { FC, ReactNode, useState } from 'react';
+import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import StartComponent from '../components/Start.component';
@@ -21,6 +20,7 @@ const WelcomePage: FC = () => {
     const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const [step, setStep] = useState<string>('start');
+    const [enrollment, setEnrollment] = useState(null);
 
     const navItems = [
         {
@@ -132,10 +132,16 @@ const WelcomePage: FC = () => {
                         />
                     ) : step == 'enrollment' ? (
                         <EnrollmentComponent
+                            enrollmentHandler={(values: any) =>
+                                setEnrollment(values)
+                            }
                             stepHandler={() => setStep('interest')}
                         />
                     ) : (
-                        <InterestComponent />
+                        <InterestComponent
+                            stepHandler={() => setStep('start')}
+                            enrollmentData={enrollment}
+                        />
                     )}
                 </Grid>
             </Grid>
