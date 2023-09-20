@@ -40,6 +40,11 @@ const InterestComponent: FC<any> = ({ stepHandler, enrollmentData }) => {
         setResult(results);
     };
 
+    let USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+
     return (
         <Box minWidth={700}>
             <Box textAlign="center">
@@ -64,7 +69,7 @@ const InterestComponent: FC<any> = ({ stepHandler, enrollmentData }) => {
                     </Button>
                 </Box>
                 <Typography mt={4} variant="h2" gutterBottom>
-                    {result}
+                    {result ? USDollar.format(result) : '-'}
                 </Typography>
             </Box>
         </Box>
