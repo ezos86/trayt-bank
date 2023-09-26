@@ -234,6 +234,7 @@ const EnrollmentComponent: FC<any> = ({ stepHandler, enrollmentHandler }) => {
                     </Box>
                     <Box textAlign="center" mt={5}>
                         <Button
+                            data-testid="enrollmentBtn"
                             type="submit"
                             variant="contained"
                             sx={{ minWidth: 150, textTransform: 'capitalize' }}

@@ -10,17 +10,28 @@ import {
     Toolbar,
 } from '@mui/material';
 import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { setI18n, useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import StartComponent from '../components/Start.component';
 import EnrollmentComponent from '../components/Enrollment.component';
 import InterestComponent from '../components/Interest.component';
 
 const WelcomePage: FC = () => {
-    const { t } = useTranslation('translation');
+    const { t, i18n } = useTranslation('translation');
+    const [currentLang, setCurrentLang] = useState<string>('en');
     const navigate = useNavigate();
     const [step, setStep] = useState<string>('start');
     const [enrollment, setEnrollment] = useState(null);
+
+    const handleTranslate = () => {
+        if (currentLang == 'en') {
+            setCurrentLang('es');
+            i18n.changeLanguage('es');
+        } else {
+            setCurrentLang('en');
+            i18n.changeLanguage('en');
+        }
+    };
 
     const navItems = [
         {
@@ -84,7 +95,11 @@ const WelcomePage: FC = () => {
                             <Button
                                 key={i}
                                 sx={{ color: '#fff', marginLeft: 2 }}
-                                onClick={() => navigate(item.link)}
+                                onClick={() =>
+                                    i == 1
+                                        ? handleTranslate()
+                                        : navigate(item.link)
+                                }
                             >
                                 {item.title}
                             </Button>

@@ -14,6 +14,7 @@ const StartComponent: FC<any> = ({ stepHandler }) => {
                 {t('welcomePage.subtitle')}
             </Typography>
             <Button
+                data-testid="welcomeBtn"
                 variant="contained"
                 sx={{ textTransform: 'capitalize' }}
                 onClick={stepHandler}
